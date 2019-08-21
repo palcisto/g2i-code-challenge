@@ -1,15 +1,8 @@
 import React from 'react';
+import ComposedPage from './ComposedPage';
 
 function Quiz() {
-  return (
-    <div>
-      <h1>Entertainment: Video Games</h1>
-      <p>Unturned originally started as a Roblox game.</p>
-      <span>1 of 10</span>
-      <button type="button">False</button>
-      <button type="button">True</button>
-    </div>
-  );
+  return <ComposedPage />;
 }
 
 export default Quiz;
