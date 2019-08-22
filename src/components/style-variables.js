@@ -1,8 +1,9 @@
 import { rem } from 'polished';
 
 export const colors = {
-  white: {
-    base: 'var(--color-white)',
+  black: {
+    base: 'var(--color-black)',
+    quarterOpaque: 'var(--color-black-quarter-opaque)',
   },
   grey: {
     base: 'var(--color-grey-base)',
@@ -15,6 +16,9 @@ export const colors = {
   },
   primary: {
     base: 'var(--color-primary)',
+  },
+  white: {
+    base: 'var(--color-white)',
   },
 };
 export const baseFontSize = 16;

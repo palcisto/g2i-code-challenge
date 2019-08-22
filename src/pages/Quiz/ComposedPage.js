@@ -1,19 +1,21 @@
 import React from 'react';
-import { bool, func, string, object } from 'prop-types';
-import { QuestionCard, QuizProgress, StyledQuizPage } from './styles';
+import { array, bool, func, object } from 'prop-types';
+import { Answers, QuestionCard, QuizProgress, StyledQuizPage } from './styles';
 import { Button } from '../../components/atoms';
 import { Loading } from '../../components/organisms';
 
 ComposedPage.props = {
+  answers: array.isRequired,
   isLoading: bool.isRequired,
   onSelectAnswer: func.isRequired,
-  progress: string.isRequired,
+  progress: object.isRequired,
   question: object.isRequired,
 };
 
 ComposedPage.defaultProps = {
+  answers: ['True', 'False'],
   isLoading: false,
-  progress: '',
+  progress: { percentage: 10, text: '' },
   question: {
     category: 'Entertainment: Video Games',
     type: 'boolean',
@@ -24,7 +26,13 @@ ComposedPage.defaultProps = {
   },
 };
 
-function ComposedPage({ isLoading, onSelectAnswer, progress, question }) {
+function ComposedPage({
+  answers,
+  isLoading,
+  onSelectAnswer,
+  progress,
+  question,
+}) {
   return (
     <StyledQuizPage title={question.category}>
       {isLoading ? (
@@ -33,14 +41,22 @@ function ComposedPage({ isLoading, onSelectAnswer, progress, question }) {
         <>
           <QuestionCard difficulty={question.difficulty}>
             <p>{question.question}</p>
+            <QuizProgress progress={progress.percentage}>
+              {progress.text}
+            </QuizProgress>
           </QuestionCard>
-          <QuizProgress>{progress}</QuizProgress>
-          <Button type="button" onClick={onSelectAnswer} data-answer="False">
-            False
-          </Button>
-          <Button type="button" onClick={onSelectAnswer} data-answer="True">
-            True
-          </Button>
+          <Answers>
+            {answers.map(answer => (
+              <Button
+                key={answer}
+                type="button"
+                onClick={onSelectAnswer}
+                data-answer={answer}
+              >
+                {answer}
+              </Button>
+            ))}
+          </Answers>
         </>
       )}
     </StyledQuizPage>

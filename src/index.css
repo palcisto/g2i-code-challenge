@@ -1,13 +1,14 @@
 @import-normalize;
 
 :root {
-  --color-black: #000;
+  --color-black: #000000;
+  --color-black-quarter-opaque: #00000033;
   --color-grey-base: #a0a0a0;
   --color-grey-light: #e0e0e0;
-  --color-grey-dark: #333;
+  --color-grey-dark: #333333;
   --color-orange: #FA6921;
   --color-orange-dark: #CC5619;
-  --color-white: #fff;
+  --color-white: #ffffff;
   --color-primary: var(--color-orange);
 }
 

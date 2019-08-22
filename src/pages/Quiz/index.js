@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { getAnswers } from '../../lib/helpers';
 import { useTriviaSettings } from '../../lib/context/triviaSettings';
 import ComposedPage from './ComposedPage';
 
@@ -7,15 +8,35 @@ function useAnswers(params) {
 }
 
 function useQuestions() {
-  return { questions: [] };
+  return {
+    questions: [
+      {
+        category: 'Entertainment: Video Games',
+        type: 'boolean',
+        difficulty: 'hard',
+        question: 'Unturned originally started as a Roblox game.',
+        correct_answer: 'True',
+        incorrect_answers: ['False'],
+      },
+    ],
+  };
 }
 
 function Quiz({ navigate, question: questionIndex }) {
+  questionIndex = parseInt(questionIndex);
+
   const [isLoading, setIsLoading] = useState();
   const { triviaCount } = useTriviaSettings();
   const { questions } = useQuestions();
   const { setAnswer } = useAnswers();
-  questionIndex = parseInt(questionIndex);
+
+  const question = questions[questionIndex];
+  const { correct_answer, incorrect_answers, type } = question;
+  const progress = {
+    percentage: triviaCount / (questionIndex + 1),
+    text: `${questionIndex + 1} of ${triviaCount}`,
+  };
+  const answers = getAnswers({ correct_answer, incorrect_answers, type });
 
   useEffect(() => {
     if (questions.length < triviaCount) {
@@ -33,15 +54,16 @@ function Quiz({ navigate, question: questionIndex }) {
     );
     const answer = event.currentTarget.dataset.answer;
     setAnswer(answer);
-    navigate(questionIndex + 1);
+    navigate(`../${questionIndex + 1}`);
   };
 
   return (
     <ComposedPage
+      answers={answers}
       isLoading={isLoading}
       onSelectAnswer={onSelectAnswer}
-      progress={`${questionIndex + 1} of ${triviaCount}`}
-      question={questions[questionIndex]}
+      progress={progress}
+      question={question}
     />
   );
 }
