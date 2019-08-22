@@ -1,4 +1,6 @@
 import React from 'react';
+import { AnswersProvider } from './lib/context/answers';
+import { QuestionsProvider } from './lib/context/questions';
 import { TriviaSettingsProvider } from './lib/context/triviaSettings';
 
 /**
@@ -22,7 +24,13 @@ export function ProviderComposer({ contexts, children }) {
 
 export function ContextProviders({ children }) {
   return (
-    <ProviderComposer contexts={[<TriviaSettingsProvider />]}>
+    <ProviderComposer
+      contexts={[
+        <TriviaSettingsProvider />,
+        <QuestionsProvider />,
+        <AnswersProvider />,
+      ]}
+    >
       {children}
     </ProviderComposer>
   );
