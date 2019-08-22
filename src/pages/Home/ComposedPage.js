@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { footerHeight } from '../../lib/style-variables';
+import { footerHeight } from '../../components/style-variables';
 import { LinkButton } from '../../components/atoms';
 import { ReactComponent as GearIcon } from '../../images/gear.svg';
 import { StyledHomePage, SettingsButton } from './styles';
@@ -21,7 +21,7 @@ function Page({ isModalOpen, toggleModal, triviaSettings }) {
     </SettingsButton>
   );
   const footerContent = (
-    <LinkButton height={footerHeight} to="/quiz">
+    <LinkButton height={footerHeight} to="/quiz/0">
       Begin
     </LinkButton>
   );

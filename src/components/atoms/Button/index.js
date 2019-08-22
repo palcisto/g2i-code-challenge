@@ -1,6 +1,5 @@
-import { Link } from '@reach/router';
-import { rem } from 'polished';
 import styled from 'styled-components';
+import { rem } from 'polished';
 import { getColor } from '../../style-functions';
 import {
   baseFontSize,
@@ -8,22 +7,19 @@ import {
   baseSpacing,
 } from '../../style-variables';
 
-const LinkButton = styled(Link)`
+const Button = styled.button`
   background-color: ${getColor('primary')};
+  border: 0;
   color: ${getColor('white')};
-  display: block;
+  display: inline-block;
   font-size: ${rem(`${baseFontSize * 1.5}px`)};
-  height: ${({ height }) => (height ? height : baseButtonHeight)};
   line-height: ${({ height }) => (height ? height : baseButtonHeight)};
-  padding: 0 ${baseSpacing * 2}px;
+  padding: 0 ${baseSpacing * 4}px;
   text-align: center;
-  text-decoration: none;
 
   &:hover {
     background-color: ${getColor('orange', 'dark')};
-    cursor: pointer;
-    text-decoration: underline;
   }
 `;
 
-export default LinkButton;
+export default Button;

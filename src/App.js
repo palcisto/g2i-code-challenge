@@ -6,10 +6,21 @@ import { ContextProviders } from './Providers';
 import { Home, Quiz, Results } from './pages';
 
 // Global State
+// questions - need on quiz and results views
+//   Use context and hooks to store questions in global state for quiz and
+//   results views to access via context
 // answers - need on quiz and results views
+//   Use context and hooks to set and store answers in global state for quiz and
+//   results views to access via context
+
 // count -
 // difficulty -
 // type -
+
+// Quiz state
+// isLoading - bool
+// currentQuestion - zero based integer
+// In useEffect check length of questions and set isLoading
 
 function App() {
   return (
@@ -24,7 +35,7 @@ function App() {
 
       <Router>
         <Home path="/" />
-        <Quiz path="quiz" />
+        <Quiz path="quiz/:question" />
         <Results path="results" />
       </Router>
       <div id="modal-root" />

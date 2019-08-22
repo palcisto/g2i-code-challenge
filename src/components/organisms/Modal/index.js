@@ -11,6 +11,7 @@ const StyledModal = styled.div`
   position: absolute;
   right: 0;
   top: 0;
+  z-index: 100;
 
   h1 {
     font-size: 2rem;

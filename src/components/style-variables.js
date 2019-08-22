@@ -18,6 +18,8 @@ export const colors = {
   },
 };
 export const baseFontSize = 16;
+export const baseFontWeight = 400;
+export const boldFontWeight = 700;
 export const baseSpacing = 5;
 export const baseButtonHeight = rem('50px');
 export const footerHeight = rem('60px');

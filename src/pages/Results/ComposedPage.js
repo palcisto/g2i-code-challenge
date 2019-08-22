@@ -1,5 +1,5 @@
 import React from 'react';
-import { footerHeight } from '../../lib/style-variables';
+import { footerHeight } from '../../components/style-variables';
 import { StyledResultsPage } from './styles';
 import { LinkButton } from '../../components/atoms';
 import { List } from '../../components/molecules';

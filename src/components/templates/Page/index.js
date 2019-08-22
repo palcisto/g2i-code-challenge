@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { getColor } from '../../../lib/style-functions';
-import { footerHeight, headerHeight } from '../../../lib/style-variables';
+import { getColor } from '../../style-functions';
+import { footerHeight, headerHeight } from '../../style-variables';
 import { Main } from '../../atoms';
 import { Header } from '../../organisms';
 

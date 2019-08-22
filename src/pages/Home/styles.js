@@ -2,8 +2,8 @@ import styled from 'styled-components/macro';
 import { rem } from 'polished';
 import { IconButton } from '../../components/atoms';
 import { Page } from '../../components/templates';
-import { getColor } from '../../lib/style-functions';
-import { baseFontSize, baseSpacing } from '../../lib/style-variables';
+import { getColor } from '../../components/style-functions';
+import { baseFontSize, baseSpacing } from '../../components/style-variables';
 
 export const SettingsButton = styled(IconButton)`
   position: absolute;
