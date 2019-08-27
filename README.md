@@ -10,7 +10,7 @@ Primarily leveraging `useState` for local state where appropriate, but in some c
 
 ### Routing
 
-Reach Router provides a simple API that is easy to use yet offers more advanced features for solving more complex routing problems as your application grows in complexity, while making accessibility a top priority. Additionally, it's API is pretty similar to the much anticipated feature release of React Router 5.x, which combines the best features of React Router and Reach Router.
+Reach Router provides a simple API that is easy to use yet offers more advanced features for solving more complex routing problems as your application grows in complexity, while making accessibility a top priority. Additionally, it's API is pretty similar to the much anticipated future release of React Router 5.x, which combines the best features of React Router and Reach Router.
 
 ### Styling / Design System
 

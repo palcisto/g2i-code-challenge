@@ -24,10 +24,12 @@ export const QuestionCard = styled.div`
   align-items: center;
   box-shadow: 0 5px 30px ${shadow};
   display: flex;
+  justify-content: center;
   height: calc(100vw - ${baseSpacing * 8}px);
   margin-bottom: ${rem(`${baseSpacing * 10}px`)};
   padding: ${rem(`${baseSpacing * 4}px`)};
   position: relative;
+  text-align: center;
 
   p:first-of-type {
     font-size: ${rem(`${baseFontSize * 1.5}px`)};
