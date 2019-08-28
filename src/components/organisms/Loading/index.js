@@ -17,7 +17,7 @@ const StyledLoading = styled.div`
   z-index: 100;
 
   h1 {
-    font-size: ${rem(`${baseFontSize * 2}px`)};
+    font-size: ${rem(baseFontSize * 2)};
     font-weight: 400;
   }
 `;

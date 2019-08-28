@@ -9,11 +9,11 @@ import {
 
 const SIZE_STATES = {
   small: {
-    fontSize: rem(`${baseFontSize * 1.1}px`),
+    fontSize: rem(baseFontSize * 1.1),
     height: rem('30px'),
   },
   medium: {
-    fontSize: rem(`${baseFontSize * 1.5}px`),
+    fontSize: rem(baseFontSize * 1.5),
     height: baseButtonHeight,
   },
 };
@@ -26,7 +26,7 @@ const Button = styled.button`
   font-size: ${({ size }) => SIZE_STATES[size].fontSize};
   line-height: ${({ height, size }) =>
     height ? height : SIZE_STATES[size].height};
-  padding: 0 ${baseSpacing * 4}px;
+  padding: 0 ${rem(baseSpacing * 4)};
   text-align: center;
 
   &:hover {

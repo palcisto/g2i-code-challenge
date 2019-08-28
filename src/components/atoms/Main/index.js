@@ -4,7 +4,8 @@ import { appWidth, baseSpacing } from '../../style-variables';
 
 const Main = styled.main`
   padding: 0 ${rem(baseSpacing * 4)};
-  width: ${appWidth};
+  max-width: ${appWidth};
+  width: 100%;
 `;
 
 export default Main;

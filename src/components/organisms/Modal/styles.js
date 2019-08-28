@@ -14,9 +14,10 @@ export const StyledModal = styled.div`
   z-index: 100;
 
   .modal-container {
+    max-width: ${appWidth};
     padding: ${rem(baseSpacing * 5)};
     position: relative;
-    width: ${appWidth};
+    width: 100%;
   }
 
   h1 {

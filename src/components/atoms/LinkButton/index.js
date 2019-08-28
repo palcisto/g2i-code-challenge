@@ -12,10 +12,10 @@ const LinkButton = styled(Link)`
   background-color: ${getColor('primary')};
   color: ${getColor('white')};
   display: block;
-  font-size: ${rem(`${baseFontSize * 1.5}px`)};
+  font-size: ${rem(baseFontSize * 1.5)};
   height: ${({ height }) => (height ? height : baseButtonHeight)};
   line-height: ${({ height }) => (height ? height : baseButtonHeight)};
-  padding: 0 ${baseSpacing * 2}px;
+  padding: 0 ${rem(baseSpacing * 2)};
   text-align: center;
   text-decoration: none;
 

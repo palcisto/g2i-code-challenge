@@ -10,6 +10,9 @@ Answers.propTypes = {
 };
 
 function Answers({ answers, onSelectAnswer }) {
+  // Due to React escpaing all strings to protext against XSS attacks, we have to
+  // sanitize the answer's text and `dangerouslySetInnerHTML` because they may contain
+  // HTML entities that otherwise would not be rendered correctly.
   return (
     <StyledAnswers>
       {answers.map(answer => (

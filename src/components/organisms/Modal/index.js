@@ -8,7 +8,7 @@ Modal.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-function Modal({ children, onClose, ...props }) {
+function Modal({ children, onClose }) {
   return createPortal(
     <StyledModal>
       <div className="modal-container">

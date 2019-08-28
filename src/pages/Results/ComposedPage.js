@@ -33,18 +33,19 @@ function ComposedPage({ answers, questions }) {
       }
     >
       <List isOrdered={true}>
-        {questions.map(({ correct_answer, question }, i) => {
+        {questions.map(({ question }, i) => {
           const answer = answers[i] || {};
           const answerCorrectness = answer.isCorrect ? 'correct' : 'wrong';
           const classNames = `fas ${ANSWER_ICONS[answerCorrectness]}`;
           return (
-            <StyledAnswer key={i}>
+            <StyledAnswer data-testid="answer-result" key={i}>
               <StyledAnswerMark
+                data-testid="answer-marker"
                 answer={answerCorrectness}
                 className={classNames}
               />
               <p dangerouslySetInnerHTML={{ __html: cleanText(question) }}></p>
-              <StyledResponse>
+              <StyledResponse data-testid="user-answer">
                 You answered: <span>{answer.answer}</span>
               </StyledResponse>
             </StyledAnswer>
