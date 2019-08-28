@@ -1,42 +1,42 @@
 import React, { useEffect, useState } from 'react';
+// import { array } from 'prop-types';
 import { getAnswers } from '../../lib/helpers';
+import { useAnswers } from '../../lib/context/answers';
+import { useQuestions } from '../../lib/context/questions';
 import { useTriviaSettings } from '../../lib/context/triviaSettings';
 import ComposedPage from './ComposedPage';
-
-function useAnswers(params) {
-  return { answers: [], setAnswer() {} };
-}
-
-function useQuestions() {
-  return {
-    questions: [
-      {
-        category: 'Entertainment: Video Games',
-        type: 'boolean',
-        difficulty: 'hard',
-        question: 'Unturned originally started as a Roblox game.',
-        correct_answer: 'True',
-        incorrect_answers: ['False'],
-      },
-    ],
-  };
-}
 
 function Quiz({ navigate, question: questionIndex }) {
   questionIndex = parseInt(questionIndex);
 
+  // State
   const [isLoading, setIsLoading] = useState();
-  const { triviaCount } = useTriviaSettings();
   const { questions } = useQuestions();
-  const { setAnswer } = useAnswers();
+  const { triviaSettings } = useTriviaSettings();
+  const { answers, setAnswers } = useAnswers();
 
-  const question = questions[questionIndex];
+  const { count: triviaCount } = triviaSettings;
+  const question = questions[questionIndex] || {
+    incorrect_answers: [],
+  };
   const { correct_answer, incorrect_answers, type } = question;
+  const availableAnswers = getAnswers({
+    correct_answer,
+    incorrect_answers,
+    type,
+  });
   const progress = {
-    percentage: triviaCount / (questionIndex + 1),
+    percentage: ((questionIndex + 1) / triviaCount) * 100,
     text: `${questionIndex + 1} of ${triviaCount}`,
   };
-  const answers = getAnswers({ correct_answer, incorrect_answers, type });
+
+  // Effects
+  useEffect(() => {
+    // Send users back to start if they refresh the page in the middle of a challenge
+    if (answers.length === 0 && questionIndex > 0) {
+      navigate('/');
+    }
+  }, [answers, questionIndex, navigate]);
 
   useEffect(() => {
     if (questions.length < triviaCount) {
@@ -48,18 +48,21 @@ function Quiz({ navigate, question: questionIndex }) {
 
   // Actions
   const onSelectAnswer = event => {
-    console.log(
-      'selectAnswer() event.currentTarget() /=>',
-      event.currentTarget.dataset.answer
-    );
     const answer = event.currentTarget.dataset.answer;
-    setAnswer(answer);
-    navigate(`../${questionIndex + 1}`);
+
+    setAnswers(answer);
+
+    if (triviaCount > questionIndex + 1) {
+      navigate(`../${questionIndex + 1}`);
+      return;
+    }
+
+    navigate(`/results`);
   };
 
   return (
     <ComposedPage
-      answers={answers}
+      answers={availableAnswers}
       isLoading={isLoading}
       onSelectAnswer={onSelectAnswer}
       progress={progress}

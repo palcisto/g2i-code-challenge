@@ -1,5 +1,6 @@
 import React from 'react';
 import { AnswersProvider } from './lib/context/answers';
+import { IsQuizCompleteProvider } from './lib/context/isQuizComplete';
 import { QuestionsProvider } from './lib/context/questions';
 import { TriviaSettingsProvider } from './lib/context/triviaSettings';
 
@@ -28,6 +29,7 @@ export function ContextProviders({ children }) {
       contexts={[
         <TriviaSettingsProvider />,
         <QuestionsProvider />,
+        <IsQuizCompleteProvider />,
         <AnswersProvider />,
       ]}
     >

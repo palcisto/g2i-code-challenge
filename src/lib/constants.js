@@ -9,11 +9,11 @@ export const TRIVIA_DEFAULT_TYPE = 'boolean';
 export const TRIVIA_DIFFICULTIES = ['easy', 'medium', 'hard'];
 export const TRIVIA_TYPES = [
   {
-    type: 'multiple choice',
+    text: 'Multiple Choice',
     value: 'multiple',
   },
   {
-    type: 'True or False',
+    text: 'True or False',
     value: 'boolean',
   },
 ];

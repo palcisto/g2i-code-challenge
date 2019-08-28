@@ -1,15 +1,24 @@
 import React from 'react';
+import { array } from 'prop-types';
+import { cleanQuestion } from '../../lib/helpers';
 import { footerHeight } from '../../components/style-variables';
 import { StyledResultsPage } from './styles';
 import { LinkButton } from '../../components/atoms';
 import { List } from '../../components/molecules';
 
-ComposedPage.props = {};
+ComposedPage.props = {
+  answers: array.isRequired,
+  questions: array.isRequired,
+};
 
-function ComposedPage() {
+function ComposedPage({ answers, questions }) {
+  console.log('answers:', answers);
+  const score = answers.filter(
+    (answer, i) => answer === questions[i].correct_answer
+  ).length;
   return (
     <StyledResultsPage
-      title={`You scored 3 / 10`}
+      title={`You scored ${score} / ${questions.length}`}
       footer={
         <LinkButton height={footerHeight} to="/">
           Play again?
@@ -17,16 +26,15 @@ function ComposedPage() {
       }
     >
       <List isOrdered={true}>
-        <li>Question 1</li>
-        <li>Question 2</li>
-        <li>Question 3</li>
-        <li>Question 4</li>
-        <li>Question 5</li>
-        <li>Question 6</li>
-        <li>Question 7</li>
-        <li>Question 8</li>
-        <li>Question 9</li>
-        <li>Question 10</li>
+        {questions.map(({ question }, i) => {
+          return (
+            <li key={i}>
+              <p
+                dangerouslySetInnerHTML={{ __html: cleanQuestion(question) }}
+              ></p>
+            </li>
+          );
+        })}
       </List>
     </StyledResultsPage>
   );

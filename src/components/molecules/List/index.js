@@ -37,10 +37,10 @@ List.defaultProps = {
   isOrdered: false,
 };
 
-function List({ children, hasMarkers, isOrdered, ...rest }) {
+function List({ className, children, hasMarkers, isOrdered, ...rest }) {
   const StyledList = isOrdered ? StyledOl : StyledUl;
   return (
-    <StyledList hasMarkers={hasMarkers} {...rest}>
+    <StyledList className={className} hasMarkers={hasMarkers} {...rest}>
       {children}
     </StyledList>
   );

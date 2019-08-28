@@ -7,13 +7,25 @@ import {
   baseSpacing,
 } from '../../style-variables';
 
+const SIZE_STATES = {
+  small: {
+    fontSize: rem(`${baseFontSize * 1.1}px`),
+    height: rem('30px'),
+  },
+  medium: {
+    fontSize: rem(`${baseFontSize * 1.5}px`),
+    height: baseButtonHeight,
+  },
+};
+
 const Button = styled.button`
   background-color: ${getColor('primary')};
   border: 0;
   color: ${getColor('white')};
   display: inline-block;
-  font-size: ${rem(`${baseFontSize * 1.5}px`)};
-  line-height: ${({ height }) => (height ? height : baseButtonHeight)};
+  font-size: ${({ size }) => SIZE_STATES[size].fontSize};
+  line-height: ${({ height, size }) =>
+    height ? height : SIZE_STATES[size].height};
   padding: 0 ${baseSpacing * 4}px;
   text-align: center;
 
@@ -21,5 +33,9 @@ const Button = styled.button`
     background-color: ${getColor('orange', 'dark')};
   }
 `;
+
+Button.defaultProps = {
+  size: 'medium',
+};
 
 export default Button;
