@@ -7,31 +7,24 @@ import { baseFontSize, baseSpacing } from '../../components/style-variables';
 
 export const SettingsButton = styled(IconButton)`
   position: absolute;
-  right: ${baseSpacing * 2}px;
-  top: ${baseSpacing * 2}px;
+  right: ${rem(baseSpacing * 2)};
+  top: ${rem(baseSpacing * 2)};
 
   svg {
-    height: 24px;
+    height: ${rem(24)};
     fill: ${getColor('grey', 'dark')};
   }
 `;
 
 export const StyledHomePage = styled(Page)`
-  background: linear-gradient(
-    0deg,
-    rgba(9, 9, 121, 1) 0%,
-    rgba(0, 212, 255, 1) 100%
-  );
-  color: #fff;
-
   main {
     display: flex;
     flex-flow: column;
     justify-content: space-around;
-    padding-top: ${rem(`${baseSpacing * 20}px`)};
+    padding-top: ${rem(baseSpacing * 20)};
   }
 
   p {
-    font-size: ${rem(`${baseFontSize * 1.5}px`)};
+    font-size: ${rem(baseFontSize * 1.5)};
   }
 `;

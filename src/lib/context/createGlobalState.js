@@ -15,8 +15,8 @@ function createGlobalState({ name, initialValue, customSetState }) {
     [`${name}Provider`](props) {
       const [state, _setState] = useState(initialValue);
       const setState = customSetState
-        ? newValue => {
-            _setState(state => customSetState(state, newValue));
+        ? (newValue, options) => {
+            _setState(state => customSetState(state, newValue, options));
           }
         : _setState;
 
@@ -25,7 +25,7 @@ function createGlobalState({ name, initialValue, customSetState }) {
           [`${name.toLowerCase()}`]: state,
           [`set${name}`]: setState,
         }),
-        [state]
+        [state, setState]
       );
       return <NewGlobalContext.Provider value={value} {...props} />;
     },

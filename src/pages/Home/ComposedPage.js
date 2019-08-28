@@ -19,7 +19,7 @@ function ComposedPage({
   onToggleModal,
   triviaSettings,
 }) {
-  const { count } = triviaSettings;
+  const { count, type } = triviaSettings;
   const headerContent = (
     <SettingsButton onClick={onToggleModal}>
       <GearIcon title="settings" />
@@ -38,7 +38,9 @@ function ComposedPage({
       header={headerContent}
       footer={footerContent}
     >
-      <p>You will be presented with {count} True or False questions.</p>
+      <p>
+        You will be presented with {count} {type.text} questions.
+      </p>
       <p>Can you score 100%?</p>
       <SettingsModal
         isModalOpen={isModalOpen}

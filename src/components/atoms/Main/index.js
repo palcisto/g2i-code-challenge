@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import { baseSpacing } from '../../style-variables';
+import { rem } from 'polished';
+import { appWidth, baseSpacing } from '../../style-variables';
 
 const Main = styled.main`
-  padding: 0 ${baseSpacing * 4}px;
-  width: 600px;
+  padding: 0 ${rem(baseSpacing * 4)};
+  width: ${appWidth};
 `;
 
 export default Main;

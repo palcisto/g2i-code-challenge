@@ -72,5 +72,3 @@ There are many areas that are out of scope of this small project but still may b
 * constants
 * misc. utilities
 * code formatting: linting / prettier
-
-### Utilities

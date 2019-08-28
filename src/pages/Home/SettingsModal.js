@@ -16,11 +16,6 @@ function SettingsModal({
   const [difficulty, setDifficulty] = useInput(triviaSettings.difficulty);
   const [type, setType] = useInput(triviaSettings.type);
   const [count, setCount] = useInput(triviaSettings.count, true);
-  console.log('settings:', {
-    count,
-    difficulty,
-    type,
-  });
 
   // Actions
   const onSubmit = event => {

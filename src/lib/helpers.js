@@ -25,7 +25,7 @@ export function getAnswers({ correct_answer, incorrect_answers, type }) {
 
   return _shuffle([
     ...incorrect_answers,
-    ...(correct_answer ? correct_answer : []),
+    ...(correct_answer ? [correct_answer] : []),
   ]);
 }
 
@@ -71,6 +71,6 @@ const sanitizeHTML = function(str) {
  * @param {string} question
  * @returns {string}
  */
-export function cleanQuestion(question) {
+export function cleanText(question) {
   return sanitizeHTML(question);
 }

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import { array } from 'prop-types';
 import { getAnswers } from '../../lib/helpers';
 import { useAnswers } from '../../lib/context/answers';
 import { useQuestions } from '../../lib/context/questions';
@@ -34,7 +33,7 @@ function Quiz({ navigate, question: questionIndex }) {
   useEffect(() => {
     // Send users back to start if they refresh the page in the middle of a challenge
     if (answers.length === 0 && questionIndex > 0) {
-      navigate('/');
+      navigate(`../${questionIndex - 1}`);
     }
   }, [answers, questionIndex, navigate]);
 
@@ -50,7 +49,10 @@ function Quiz({ navigate, question: questionIndex }) {
   const onSelectAnswer = event => {
     const answer = event.currentTarget.dataset.answer;
 
-    setAnswers(answer);
+    setAnswers({
+      answer,
+      isCorrect: answer === question.correct_answer,
+    });
 
     if (triviaCount > questionIndex + 1) {
       navigate(`../${questionIndex + 1}`);

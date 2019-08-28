@@ -1,5 +1,6 @@
 import React from 'react';
 import { array, func } from 'prop-types';
+import { cleanText } from '../../lib/helpers';
 import { Button } from '../../components/atoms';
 import { StyledAnswers } from './styles';
 
@@ -17,9 +18,8 @@ function Answers({ answers, onSelectAnswer }) {
           type="button"
           onClick={onSelectAnswer}
           data-answer={answer}
-        >
-          {answer}
-        </Button>
+          dangerouslySetInnerHTML={{ __html: cleanText(answer) }}
+        ></Button>
       ))}
     </StyledAnswers>
   );

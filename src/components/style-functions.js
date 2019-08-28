@@ -18,14 +18,13 @@ function _select(map, value, mapType) {
 }
 
 export function getColor(palette, tone = BASE_TONE) {
-  let selectedPalette;
   let selectedColor;
 
   try {
-    selectedPalette = _select(colors, palette, 'palette');
+    const selectedPalette = _select(colors, palette, 'palette');
     selectedColor = _select(selectedPalette, tone, 'tone');
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 
   return selectedColor;

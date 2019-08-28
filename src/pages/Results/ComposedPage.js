@@ -1,8 +1,13 @@
 import React from 'react';
 import { array } from 'prop-types';
-import { cleanQuestion } from '../../lib/helpers';
+import { cleanText } from '../../lib/helpers';
 import { footerHeight } from '../../components/style-variables';
-import { StyledResultsPage } from './styles';
+import {
+  StyledAnswer,
+  StyledAnswerMark,
+  StyledResponse,
+  StyledResultsPage,
+} from './styles';
 import { LinkButton } from '../../components/atoms';
 import { List } from '../../components/molecules';
 
@@ -11,11 +16,13 @@ ComposedPage.props = {
   questions: array.isRequired,
 };
 
+const ANSWER_ICONS = {
+  correct: 'fa-plus',
+  wrong: 'fa-minus',
+};
+
 function ComposedPage({ answers, questions }) {
-  console.log('answers:', answers);
-  const score = answers.filter(
-    (answer, i) => answer === questions[i].correct_answer
-  ).length;
+  const score = answers.filter((answer, i) => answer.isCorrect).length;
   return (
     <StyledResultsPage
       title={`You scored ${score} / ${questions.length}`}
@@ -26,13 +33,21 @@ function ComposedPage({ answers, questions }) {
       }
     >
       <List isOrdered={true}>
-        {questions.map(({ question }, i) => {
+        {questions.map(({ correct_answer, question }, i) => {
+          const answer = answers[i] || {};
+          const answerCorrectness = answer.isCorrect ? 'correct' : 'wrong';
+          const classNames = `fas ${ANSWER_ICONS[answerCorrectness]}`;
           return (
-            <li key={i}>
-              <p
-                dangerouslySetInnerHTML={{ __html: cleanQuestion(question) }}
-              ></p>
-            </li>
+            <StyledAnswer key={i}>
+              <StyledAnswerMark
+                answer={answerCorrectness}
+                className={classNames}
+              />
+              <p dangerouslySetInnerHTML={{ __html: cleanText(question) }}></p>
+              <StyledResponse>
+                You answered: <span>{answer.answer}</span>
+              </StyledResponse>
+            </StyledAnswer>
           );
         })}
       </List>
