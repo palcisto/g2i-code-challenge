@@ -10,8 +10,8 @@ const StyledPage = styled.div`
   background-color: ${getColor('grey', 'light')};
   display: grid;
   grid-template-rows: ${headerHeight} 1fr ${footerHeight};
+  justify-content: center;
   min-height: 100vh;
-  max-width: 500px;
   text-align: center;
   width: 100vw;
 `;

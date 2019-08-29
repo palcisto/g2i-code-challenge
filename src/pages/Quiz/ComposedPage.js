@@ -1,7 +1,8 @@
 import React from 'react';
 import { array, bool, func, object } from 'prop-types';
-import { Answers, QuestionCard, QuizProgress, StyledQuizPage } from './styles';
-import { Button } from '../../components/atoms';
+import Answers from './Answers';
+import QuestionCard from './QuestionCard';
+import { StyledQuizPage } from './styles';
 import { Loading } from '../../components/organisms';
 
 ComposedPage.props = {
@@ -13,17 +14,7 @@ ComposedPage.props = {
 };
 
 ComposedPage.defaultProps = {
-  answers: ['True', 'False'],
   isLoading: false,
-  progress: { percentage: 10, text: '' },
-  question: {
-    category: 'Entertainment: Video Games',
-    type: 'boolean',
-    difficulty: 'hard',
-    question: 'Unturned originally started as a Roblox game.',
-    correct_answer: 'True',
-    incorrect_answers: ['False'],
-  },
 };
 
 function ComposedPage({
@@ -34,29 +25,13 @@ function ComposedPage({
   question,
 }) {
   return (
-    <StyledQuizPage title={question.category}>
+    <StyledQuizPage title={question.category || ''}>
       {isLoading ? (
         <Loading />
       ) : (
         <>
-          <QuestionCard difficulty={question.difficulty}>
-            <p>{question.question}</p>
-            <QuizProgress progress={progress.percentage}>
-              {progress.text}
-            </QuizProgress>
-          </QuestionCard>
-          <Answers>
-            {answers.map(answer => (
-              <Button
-                key={answer}
-                type="button"
-                onClick={onSelectAnswer}
-                data-answer={answer}
-              >
-                {answer}
-              </Button>
-            ))}
-          </Answers>
+          <QuestionCard question={question} progress={progress} />
+          <Answers answers={answers} onSelectAnswer={onSelectAnswer} />
         </>
       )}
     </StyledQuizPage>

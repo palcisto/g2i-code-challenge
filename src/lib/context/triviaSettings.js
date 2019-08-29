@@ -22,29 +22,31 @@ function TriviaSettingsProvider(props) {
   const defaultTriviaType = TRIVIA_TYPES.find(
     type => type.value === TRIVIA_DEFAULT_TYPE
   );
-  const [triviaCount, setTriviaCount] = useState(TRIVIA_DEFAULT_COUNT);
-  const [triviaDifficulty, setTriviaDifficulty] = useState(
-    TRIVIA_DEFAULT_DIFFICULTY
-  );
-  const [triviaType, _setTriviaType] = useState(defaultTriviaType);
+  const [triviaSettings, _setTriviaSettings] = useState({
+    count: TRIVIA_DEFAULT_COUNT,
+    difficulty: TRIVIA_DEFAULT_DIFFICULTY,
+    type: defaultTriviaType,
+  });
 
-  function setTriviaType(selectedValue) {
-    const selectedType = TRIVIA_TYPES.find(
-      type => type.value === selectedValue
-    );
-    _setTriviaType(selectedType);
+  function setTriviaSettings({ count, difficulty, type: selectedType }) {
+    _setTriviaSettings(current => {
+      const type = TRIVIA_TYPES.find(_type => _type.value === selectedType);
+
+      return {
+        ...current,
+        ...(type && { type }),
+        ...(count && { count }),
+        ...(difficulty && { difficulty }),
+      };
+    });
   }
 
   const value = React.useMemo(
     () => ({
-      triviaCount,
-      triviaDifficulty,
-      triviaType,
-      setTriviaCount,
-      setTriviaDifficulty,
-      setTriviaType,
+      triviaSettings,
+      setTriviaSettings,
     }),
-    [triviaCount, triviaDifficulty, triviaType]
+    [triviaSettings]
   );
   return <TriviaSettingsContext.Provider value={value} {...props} />;
 }
