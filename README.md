@@ -23,9 +23,10 @@ React Helmet is used to manage all things related to the app's `<head>`, ie. set
 
 ## Project Structure
 
-The project is organized in a way to be easy and intuitive to navigate. Making use of Atomic Design's methodology, all generally shared components are organized into atoms, molecules, organisms, and templates w/ in the `components/` directory. Atomic pages are placed in a `pages/` directory at the root of `src/` to make it easier to find the routes/views of the application and also inherently giving them a higher "priority".
+The project is organized in a way to be easy and intuitive to navigate. Making use of Atomic Design's methodology, all generally shared components are organized into atoms, molecules, organisms, and templates within the `components/` directory. Atomic pages are placed in a `pages/` directory at the root of `src/` to make it easier to find the routes/views of the application and also inherently giving them a higher order in the hierarchy.
 
-The pages directory is then organized by page (domain/feature). Page (domain) specific components will live wihtin their respective page's directory along w/ their respective tests. This enables developers to more easily find all the domain specific components for a particular page.
+The pages directory is then organized by page (domain/feature). Page (domain) specific components will live within their respective page's directory along with their respective styles and tests. This enables developers to more easily find all the domain specific files for a particular page.
+If Storybook was used in this project, then related stories would live within their respective component's folder.
 
 
 ```
@@ -59,16 +60,18 @@ If the project required communication with a collection of REST APIs and service
 
 Some teams have adopted GraphQL and if it were to be used in this project, we would create a `graphql/` directory within the root of the `src/` directory in which to place all of our shared queries and mutations, as well as any client-side graphql configuration for libraries like Apollo Client and Relay.
 
-#### Internationalization & Localization
+### Utilities, Helpers, and Constants
 
+Any miscellaneous utilities, helpers and constants live in `src/lib/`. Additionally, I chose to place all custom hooks and context related code in this directory as well. There was no particular reason for location and naming outside of just keeping all that miscellaneous stuff together in one place.
 
 ## Other Concerns
 
 There are many areas that are out of scope of this small project but still may be important factors depending on the concerns, opinions, and preferences of the team and the requirements set forth by the project and/or the organization and it's customers.
-* graphql
-* i18n & l10n
-* services / APIs
-* helpers functions
-* constants
-* misc. utilities
-* code formatting: linting / prettier
+
+### i18n & l10n
+
+Internationalization and localization are both out of the scope of this project and can be solved for in many different ways. I would probably reach for react-i18next.
+
+### Linting & Code Formatting
+
+I use Eslint in all my projects and fortunately it's already setup in Create React App, otherwise I would have gone ahead and set that up. I have also been trying Prettier out for the last 6 months or so and chose to use it here since I already have the VS Code extension installed. I feel Prettier is a valuable time-saving tool and at the very least reduces disagreements in pull requests over code formatting.
