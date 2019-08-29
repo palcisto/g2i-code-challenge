@@ -29,6 +29,9 @@ export const colors = {
   white: {
     base: 'var(--color-white)',
   },
+  yellow: {
+    base: 'var(--color-yellow)',
+  },
 };
 export const appWidth = '600px';
 export const baseFontSize = 16;
