@@ -1,5 +1,11 @@
 # Patrick's G2i Coding Challenge
 
+## Setup
+
+1. Run `yarn install`
+2. Run `yarn start`
+3. Have fun!
+
 ## The Stack
 
 My goal was to showcase how I would scaffold out a project that I expect to grow considerably while minimizing the dependencies installed to keep it as simple as possible until it requires more complex tooling. With that said, you may notice in certain areas of the project that I have over-engineered some solutions, such as the file structure, management of global state, or even certain aspects of the styling system. I am a firm believer in keeping things as simple as possible for as long as possible until inherit complexity is a neccessity for solving a challenging problem. The three R's -- Reduce. Reuse. Refactor. -- can go a long way towards keeping an application's codebase as DRY as possible.
